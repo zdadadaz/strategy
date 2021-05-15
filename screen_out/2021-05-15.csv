@@ -1,0 +1,4 @@
+﻿strategy,ticker,name,price,rsi
+rsi_up_50_doji,1102,亞泥,49.0,50.79
+rsi_up_50_doji,1216,統一,74.2,52.85
+sma_down,1303,南亞,80.4,-1.0
