@@ -28,6 +28,5 @@ previous two
 ### done
 previous two
 ### follow up
-* test analyzer with strategy (seems not feasible? need check)
+* run strategy for all tw50 and AU100 with rsi condition or sma to have a list of returns
 * real-time price
-* think how to apply without watch price consistantly
