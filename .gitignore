@@ -1,3 +1,15 @@
 .idea/
 .ipynb_checkpoints/
 backtrader/__pycache__
+backtrader/indicators/__pycache__
+backtrader/brokers/__pycache__
+backtrader/analyzers/__pycache__
+backtrader/feeds/__pycache__
+backtrader/observers/__pycache__
+backtrader/sizers/__pycache__
+backtrader/signals/__pycache__
+backtrader/stores/__pycache__
+backtrader/studies/__pycache__
+backtrader/utils/__pycache__
+screen_out/
+strategy_out/

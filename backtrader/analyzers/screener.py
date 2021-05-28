@@ -31,10 +31,11 @@ class Screener_RSI(bt.Analyzer):
         for data, rsi in self.rsi.items():
             node = data._name, round(data.close[0],2), round(rsi.lines.rsi[0], 2)
             # print('avg vol, cur vol',self.smavolume[data].lines.sma[0], self.data.volume[0])
-            if rsi.lines.rsi[0] >=50 and (data.close[0] - data.low[0])/data.low[0] > 0.01 \
+            dojo = (data.close[0] - data.low[0])/data.low[0]
+            if rsi.lines.rsi[0] >=50 and dojo > 0.01 \
                 and self.data.volume[0]>5000 and self.smavolume[data].lines.sma[0]*1.5 < self.data.volume[0]:
                 self.rets['rsi_up_50_doji'].append(node)
-            if rsi.lines.rsi[0] <= 25 and self.data.volume[0]>5000:
+            if rsi.lines.rsi[0] <= 25 and self.data.volume[0]>5000 and dojo > 0.01:
                 self.rets['rsi_down_25'].append(node)
 
 class Screener_SMA(bt.Analyzer):

@@ -6,25 +6,26 @@ from backtrader.sizers import *
 import pandas as pd
 from tqdm import tqdm
 
-stock = yf.Ticker('2303.TW')
 
 # declare
 cerebro = bt.Cerebro()
-cerebro.addstrategy(Fibpivot)
+cerebro.addstrategy(RSI_up_down, type='all')
 cerebro.addsizer(FixedSize)
 
 # input data
 df = pd.read_csv('datas/TW50.csv')
 instruments = list(df['ticker'])
 for idx in tqdm(range(1)): # len(instruments) 
-    ticker = instruments[idx]
+    # ticker = instruments[idx]
+    # ticker = 2615
+    ticker = 6415
     stock = yf.Ticker(str(ticker)+'.TW')
     data = stock.history(period='1y')
     try:
         data = data.drop(columns=['Dividends', 'Stock Splits'])
         data = PandasData(dataname=data)
         cerebro.adddata(data, name= str(ticker))
-        cerebro.resampledata(data, timeframe=bt.TimeFrame.Months)
+        # cerebro.resampledata(data, timeframe=bt.TimeFrame.Months)
     except:
         pass
 

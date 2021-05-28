@@ -30,3 +30,12 @@ previous two
 ### follow up
 * run strategy for all tw50 and AU100 with rsi condition or sma to have a list of returns
 * real-time price
+
+
+## 20210528
+### done
+previous one
+### follow up
+* tune rsi indicator to make money (ex:2615)
+* sizer need to adjust to buy same amount of money
+* real-time price
