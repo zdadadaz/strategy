@@ -9,18 +9,25 @@ from tqdm import tqdm
 
 # declare
 cerebro = bt.Cerebro()
-cerebro.addstrategy(RSI_up_down, type='all')
+# cerebro.addstrategy(RSI_up_down, type='up')
+cerebro.addstrategy(MA_CrossOver)
+# cerebro.addstrategy(Fibpivot)
 cerebro.addsizer(FixedSize)
 
 # input data
-df = pd.read_csv('datas/TW50.csv')
+suffix = 'AX' #'AX' or 'TW'
+if suffix == 'TW':
+    df = pd.read_csv('datas/TW50.csv')
+else:
+    df = pd.read_csv('datas/AU300.csv')
 instruments = list(df['ticker'])
 for idx in tqdm(range(1)): # len(instruments) 
     # ticker = instruments[idx]
     # ticker = 2615
-    ticker = 6415
-    stock = yf.Ticker(str(ticker)+'.TW')
+    ticker = 'SKC'
+    stock = yf.Ticker(str(ticker)+f'.{suffix}')
     data = stock.history(period='1y')
+    print(len(data))
     try:
         data = data.drop(columns=['Dividends', 'Stock Splits'])
         data = PandasData(dataname=data)

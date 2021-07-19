@@ -11,16 +11,18 @@ def strategy_fn(tuple_in):
     type = tuple_in[1]
     # declare
     cerebro = bt.Cerebro()
+    cerebro.broker.setcash(300.0) # your asset /1000
     cerebro.addstrategy(RSI_up_down, d0=ticker, type=type)
     cerebro.addsizer(FixedSize)
-    # input data
-    stock = yf.Ticker(str(ticker)+'.TW')
+    # input data 
+    stock = yf.Ticker(str(ticker)+'.TW')  # need change suffix
     data = stock.history(period='1y')
     try:
         data = data.drop(columns=['Dividends', 'Stock Splits'])
-        data = PandasData(dataname=data)
-        cerebro.adddata(data, name= str(ticker))
-        # cerebro.resampledata(data, timeframe=bt.TimeFrame.Months)
+        if len(data) >10:
+            data = PandasData(dataname=data)
+            cerebro.adddata(data, name= str(ticker))
+            # cerebro.resampledata(data, timeframe=bt.TimeFrame.Months)
     except:
         pass
     start = cerebro.broker.getvalue()

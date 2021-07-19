@@ -741,13 +741,25 @@ class LinesOperation(LineActions):
 
     def next(self):
         if self.bline:
+            # prevent division of zero
+            if self.b[0] == 0:
+                self.b[0] = self.a[0] if self.a[0] != 0 else 1
             self[0] = self.operation(self.a[0], self.b[0])
         elif not self.r:
             if not self.btime:
+                # prevent division of zero
+                if self.b == 0:
+                    self.b = self.a[0] if self.a[0] != 0 else 1
                 self[0] = self.operation(self.a[0], self.b)
             else:
+                # prevent division of zero
+                if self.b == 0:
+                    self.b = self.a.time() 
                 self[0] = self.operation(self.a.time(), self.b)
         else:
+            # prevent division of zero
+            if self.b[0] == 0:
+                self.b[0] = self.a if self.a != 0 else 1
             self[0] = self.operation(self.a, self.b[0])
 
     def once(self, start, end):

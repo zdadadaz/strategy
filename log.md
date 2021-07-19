@@ -37,5 +37,23 @@ previous two
 previous one
 ### follow up
 * tune rsi indicator to make money (ex:2615)
-* sizer need to adjust to buy same amount of money
+* sizer need to adjust to buy same amount of money -> given the total funding as the same as actual one 
+* real-time price
+
+## 20210613
+### done
+previous 2nd
+AX screener and strategy
+### follow up
+* draw rsi and sma on dash
+* tune rsi indicator to spot the entry 
+* real-time price
+
+
+## 20210716
+### done
+previous 1st
+### follow up
+* draw rsi and sma on dash with pandas.ta
+* tune rsi indicator to spot the entry 
 * real-time price

@@ -17,7 +17,7 @@ def summary(path_to_dir, path_to_out):
                 if tmp:
                     filelist.append(tmp)
     filelist.sort(reverse=True)
-    wf.write_to_csv(path_to_out, filelist)
+    wf.write_to_csv(path_to_out+'.csv', filelist)
 
 def main():
     path_to_out = 'strategy_out/summary_{}'.format(date.today())
@@ -27,12 +27,17 @@ def main():
     split = cpu_count() - 1
     path_to_dir = f'strategy_out/{date.today()}'
     print("cpu {} and split {}".format(cpu_count(), split))
-    # strategy.strategy_fn(instruments[0])
+   
 
     n = len(instruments)
     arr = list(zip(copy.deepcopy(instruments), ['up' for i in range(n)]))
     arr += list(zip(copy.deepcopy(instruments), ['down' for i in range(n)]))
     arr += list(zip(copy.deepcopy(instruments), ['all' for i in range(n)]))
+
+    # for a in arr:
+    #     if a[0] == 2382:
+    #         strategy.strategy_fn(a)
+
     pool = Pool(processes=split)
     pool.map(strategy.strategy_fn, arr)
     pool.close()

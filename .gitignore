@@ -11,5 +11,8 @@ backtrader/signals/__pycache__
 backtrader/stores/__pycache__
 backtrader/studies/__pycache__
 backtrader/utils/__pycache__
+backtrader/analyzers/__pycache__
+backtrader/strategies/__pycache__
+utils/__pycache__/*
 screen_out/
 strategy_out/
